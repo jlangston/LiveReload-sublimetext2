@@ -30,11 +30,14 @@ git clone -b devel https://github.com/dz0ny/LiveReload-sublimetext2.git LiveRelo
 
 # Using
 
-Enable desired plug-ins via Command Palette (Ctrl+Shift+P) add livereload.js to you html document.
+Enable the desired plug-ins via Command Palette (Ctrl+Shift+P) and add livereload.js to your html document:
 
-```<script>document.write('<script src="http://' + (location.host || '${1:localhost}').split(':')[0] + ':${2:35729}/livereload.js?snipver=1"></' + 'script>')</script>```
+```
+<script>document.write('<script src="http://' + (location.host || 'localhost')
+.split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+```
 
-You can also use one of the extensions listed here http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-
+Alternatively you can use one of the browser extensions listed here: http://go.livereload.com/extensions.
 
 ## Available plug-ins:
 
