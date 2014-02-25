@@ -1,20 +1,20 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-
+ 
 import os
 import json
-
+ 
 def log(msg):
     pass
-
+ 
 try:
     import sublime
 except Exception as e:
     log(e)
-
-
+ 
+ 
 class Settings(dict):
-
+ 
     def __init__(self):
         try:
             cdir = os.path.dirname(os.path.abspath(__file__))
@@ -25,8 +25,18 @@ class Settings(dict):
             file_object = open(self.file_name)
             data = json.load(file_object)
             file_object.close()
-            for i in range(len(data)):
-                self[data.keys()[i]] = data[data.keys()[i]]
+ 
+            print('##jx0: ', data )
+            print('##jx0: ', data.keys() )
+            # print('##jx0: ', data.keys()[0] )
+            
+            self['enabled_plugins'] = ['SimpleReloadPlugin']
+            
+            # for i in range(len(data)):
+            #     self[data.keys()[i]] = data[ data.keys()[i] ]
+            
+            print('##jx2: ', self)
+ 
             log('LiveReload: Settings loaded')
         except Exception as e:
             log(e)
@@ -36,16 +46,16 @@ class Settings(dict):
         json.dump(self, file_object, indent=5)
         file_object.close()
         log('LiveReload: Settings saved')
-
+ 
     def get(self, key, default=None):
         try:
             return self[key]
         except Exception:
             return default
-
+ 
     def set(self, key, value):
         self[key] = value
         self.save()
-
+ 
     def reload(self):
         self.__init__(self.file_name)
