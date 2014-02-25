@@ -1,5 +1,3 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
 
 import os
 import threading
@@ -64,14 +62,14 @@ class LessThread(threading.Thread):
         threading.Thread.__init__(self)
 
     def run(self):
-        cmd = self.command + " " + self.filename + " " + self.filename.replace('.less','.css')
-
+        # cmd = self.command + " " + self.filename + " " + self.filename.replace('.less','.css')
+        cmd = self.command + " " + self.dirname + "/" + self.filename +  " " + self.dirname.replace('less','css') + "/" + self.filename.replace('.less','.css')
         p = subprocess.Popen(cmd, shell=True, stdin=subprocess.PIPE,
                              stdout=subprocess.PIPE,
                              stderr=subprocess.STDOUT)
         test = p.stdout.read()
         if test:
-            print("ATSDFASDFASDFASD!!")
+            # print("ATSDFASDFASDFASD!!")
             print(test)
             self.on_compile()
 
